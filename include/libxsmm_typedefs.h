@@ -493,6 +493,10 @@ LIBXSMM_EXTERN_C typedef LIBXSMM_RETARGETABLE void (*libxsmm_xtransfunction)(
 LIBXSMM_EXTERN_C typedef LIBXSMM_RETARGETABLE void (*libxsmm_xtrsmfunction)(
   const void* a, const void* b, void* c);
 
+/** Specialized function for Nektar++ */
+LIBXSMM_EXTERN_C typedef LIBXSMM_RETARGETABLE void (*libxsmm_nek_function)(
+  const double *, double *, double *);
+
 /** Structure to receive information about GEMM-kernels (libxsmm_get_mmkernel_info). */
 LIBXSMM_EXTERN_C typedef struct LIBXSMM_RETARGETABLE libxsmm_mmkernel_info {
   /** Input/output data-type */

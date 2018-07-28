@@ -217,6 +217,12 @@ LIBXSMM_EXTERN_C typedef struct LIBXSMM_RETARGETABLE LIBXSMM_MAY_ALIAS libxsmm_c
   const void* values;
 } libxsmm_csr_reg_descriptor;
 
+LIBXSMM_EXTERN_C typedef struct LIBXSMM_RETARGETABLE libxsmm_nek_descriptor {
+  unsigned int num_modes;
+  unsigned int num_quad;
+  unsigned int num_elmt;
+} libxsmm_nek_descriptor;
+
 /** Function type used for convolutions (single-precision); the actual signature depends on the kind of convolution. */
 LIBXSMM_EXTERN_C typedef LIBXSMM_RETARGETABLE void (*libxsmm_sconvfunction)(
   const float* input1, const float* input2, float* output,
@@ -534,7 +540,8 @@ typedef enum libxsmm_build_kind {
   LIBXSMM_BUILD_KIND_CUPD,
   LIBXSMM_BUILD_KIND_CWFWD,
   LIBXSMM_BUILD_KIND_CWBWD,
-  LIBXSMM_BUILD_KIND_CWUPD
+  LIBXSMM_BUILD_KIND_CWUPD,
+  LIBXSMM_BUILD_KIND_NEKTAR,
 } libxsmm_build_kind;
 
 LIBXSMM_EXTERN_C typedef union LIBXSMM_RETARGETABLE libxsmm_build_descriptor {
@@ -550,6 +557,7 @@ LIBXSMM_EXTERN_C typedef union LIBXSMM_RETARGETABLE libxsmm_build_descriptor {
   const libxsmm_mcopy_descriptor* matcopy;
   const libxsmm_trans_descriptor* trans;
   const libxsmm_trsm_descriptor* trsm;
+  const libxsmm_nek_descriptor* nek;
 } libxsmm_build_descriptor;
 
 LIBXSMM_EXTERN_C typedef struct LIBXSMM_RETARGETABLE libxsmm_build_request {

@@ -1458,6 +1458,10 @@ LIBXSMM_API_INTERN int libxsmm_build(const libxsmm_build_request* request, unsig
         }
       }
     } break;
+    case LIBXSMM_BUILD_KIND_NEKTAR: { /* sparse SOA kernel, CSR format */
+      assert(0 != request->descriptor.nek);
+      assert(0);
+    } break;
 # if !defined(NDEBUG) /* library code is expected to be mute */
     default: { /* unknown kind */
       static int error_once = 0;
